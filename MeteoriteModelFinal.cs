@@ -16,25 +16,25 @@ public class MeteoriteModelFinal : MonoBehaviour
     public int DamageToPlayer => damageToPlayer;
     public float Speed => speed;
     public int CurrentHealth => currentHealth;
-    public int MaxHealth => maxHealth; // Added for potential UI or other access
+    public int MaxHealth => maxHealth; // Añadido para posible UI u otro acceso
 
     void Awake()
     {
         currentHealth = maxHealth;
-        Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Initialized with health {currentHealth}/{maxHealth}");
+        Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Inicializado con salud {currentHealth}/{maxHealth}");
     }
 
     public void TakeDamage(int amount)
     {
-        if (currentHealth <= 0) return; // Already destroyed or pending destruction
+        if (currentHealth <= 0) return; // Ya destruido o pendiente de destrucción
 
         currentHealth -= amount;
-        Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Took {amount} damage, current health: {currentHealth}");
+        Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Recibió {amount} de daño, salud actual: {currentHealth}");
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Health depleted, invoking OnMeteoriteDestroyed.");
+            Debug.Log($"MeteoriteModelFinal ({gameObject.name}): Salud agotada, invocando OnMeteoriteDestroyed.");
             OnMeteoriteDestroyed?.Invoke();
         }
     }
